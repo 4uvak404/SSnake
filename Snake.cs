@@ -12,7 +12,7 @@ namespace SSnake
         private int factLenght, wantedLenght;
         private Direction direction;
         private Color bodyColor;
-        private List<Point> body = new List<Point>();
+        private List<Point> bodyPoints = new List<Point>();
 
         public int MapWidth
         {
@@ -92,6 +92,24 @@ namespace SSnake
                 }
             }
         }
-
+        public Color BodyColor
+        {
+            get { return bodyColor; }
+            set
+            {
+                bodyColor = value;
+            }
+        }
+        private List<Point> BodyPoints
+        {
+            get { return bodyPoints; }
+        }
+        public Point Head
+        {
+            get
+            {
+                return BodyPoints.Last();
+            }
+        }
     }
 }
