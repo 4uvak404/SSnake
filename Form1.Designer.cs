@@ -31,8 +31,8 @@
             this.tableLayoutPanelMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
             this.groupBoxMenu = new System.Windows.Forms.GroupBox();
-            this.buttonStartStop = new System.Windows.Forms.Button();
             this.labelScore = new System.Windows.Forms.Label();
+            this.buttonStartStop = new System.Windows.Forms.Button();
             this.tableLayoutPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             this.groupBoxMenu.SuspendLayout();
@@ -56,6 +56,7 @@
             // 
             // pictureBoxScreen
             // 
+            this.pictureBoxScreen.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxScreen.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
@@ -75,15 +76,6 @@
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Штуки";
             // 
-            // buttonStartStop
-            // 
-            this.buttonStartStop.Location = new System.Drawing.Point(51, 136);
-            this.buttonStartStop.Name = "buttonStartStop";
-            this.buttonStartStop.Size = new System.Drawing.Size(75, 23);
-            this.buttonStartStop.TabIndex = 0;
-            this.buttonStartStop.Text = "Старт";
-            this.buttonStartStop.UseVisualStyleBackColor = true;
-            // 
             // labelScore
             // 
             this.labelScore.AutoSize = true;
@@ -92,6 +84,15 @@
             this.labelScore.Size = new System.Drawing.Size(39, 15);
             this.labelScore.TabIndex = 1;
             this.labelScore.Text = "Очки:";
+            // 
+            // buttonStartStop
+            // 
+            this.buttonStartStop.Location = new System.Drawing.Point(51, 136);
+            this.buttonStartStop.Name = "buttonStartStop";
+            this.buttonStartStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartStop.TabIndex = 0;
+            this.buttonStartStop.Text = "Старт";
+            this.buttonStartStop.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using System.Drawing;
+//using System.Drawing.Drawing2D;
+//using System.Drawing.Imaging;
+//using System.Drawing.Text;
 
 namespace SSnake
 {
@@ -155,6 +159,20 @@ namespace SSnake
             }
             BodyPoints.Add (newHead);
             return notCollision;
+        }
+        public void Draw(Bitmap screen)
+        {
+            Pen penPen = new Pen(BodyColor, 10);
+            Graphics grafon = Graphics.FromImage(screen);
+            Point[] drawingPoints = new Point[BodyPoints.Count];
+            double cellWidth = (double)screen.Width / mapWidth;
+            double cellHeight = (double)screen.Height / mapHeight;
+            for (int i = 0; i < drawingPoints.Length; i++)
+            {
+                drawingPoints[i].X = (int)(cellWidth / 2 + BodyPoints[i].X * cellWidth);
+                drawingPoints[i].Y = (int)(cellHeight / 2 + BodyPoints[i].Y * cellHeight);
+            }
+            grafon.DrawPolygon(penPen, drawingPoints);
         }
     }
 }
