@@ -103,6 +103,7 @@ namespace SSnake
         private List<Point> BodyPoints
         {
             get { return bodyPoints; }
+            set { bodyPoints = value; }
         }
         public Point Head
         {
@@ -110,6 +111,50 @@ namespace SSnake
             {
                 return BodyPoints.Last();
             }
+        }
+        public bool MoveForward()
+        {
+            bool notCollision;
+            if (FactLenght == WantedLenght)
+            {
+                BodyPoints.RemoveAt(0);
+            }
+            else if (FactLenght < WantedLenght)
+            {
+                FactLenght++;
+            }
+            else
+            {
+                int i = FactLenght - WantedLenght + 1;
+                BodyPoints.RemoveRange(0, i);
+                FactLenght = WantedLenght;
+            }
+            Point newHead = new Point(0,0);
+            switch (Direction)
+            {
+                case Direction.Up:
+                    newHead.Y = Head.Y - 1;
+                    break;
+                case Direction.Right:
+                    newHead.X = Head.X + 1;
+                    break;
+                case Direction.Down:
+                    newHead.Y = Head.Y + 1;
+                    break;
+                case Direction.Left:
+                    newHead.X = Head.X - 1;
+                    break;
+            }
+            if (BodyPoints.Contains(newHead))
+            {
+                notCollision = false;
+            }
+            else
+            {
+                notCollision = true;
+            }
+            BodyPoints.Add (newHead);
+            return notCollision;
         }
     }
 }
