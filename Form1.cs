@@ -1,5 +1,12 @@
 namespace SSnake
 {
+    enum Direction
+    {
+        Up,
+        Right,
+        Down,
+        Left
+    }
     public partial class Form1 : Form
     {
         public Form1()
