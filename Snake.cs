@@ -148,7 +148,7 @@ namespace SSnake
                 BodyPoints.RemoveRange(0, i);
                 FactLenght = WantedLenght;
             }
-            Point newHead = new Point(0,0);
+            Point newHead = Head;
             switch (Direction)
             {
                 case Direction.Up:
