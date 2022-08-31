@@ -30,6 +30,7 @@ namespace SSnake
             BodyPoints.Add(pont);
             pont.X++;
             BodyPoints.Add(pont);
+            Direction = Direction.Up;
         }
 
         public int MapWidth
