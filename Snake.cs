@@ -16,7 +16,21 @@ namespace SSnake
         private int factLenght, wantedLenght;
         private Direction direction;
         private Color bodyColor;
-        private List<Point> bodyPoints = new List<Point>();
+        private List<Point> bodyPoints = new List<Point>(); 
+        public Snake(int mapWidth, int mapHeiht, Color bodyColor)
+        {
+            MapWidth = mapWidth;
+            MapHeight = mapHeiht;
+            factLenght = 2;
+            wantedLenght = 2;
+            BodyColor = bodyColor;
+            Point pont = new Point();
+            pont.X = MapWidth / 2 - 1;
+            pont.Y = MapHeight / 2;
+            BodyPoints.Add(pont);
+            pont.X++;
+            BodyPoints.Add(pont);
+        }
 
         public int MapWidth
         {
