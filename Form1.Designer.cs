@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
             this.groupBoxMenu = new System.Windows.Forms.GroupBox();
             this.labelScore = new System.Windows.Forms.Label();
             this.buttonStartStop = new System.Windows.Forms.Button();
+            this.timerGameTick = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             this.groupBoxMenu.SuspendLayout();
@@ -93,6 +95,12 @@
             this.buttonStartStop.TabIndex = 0;
             this.buttonStartStop.Text = "Старт";
             this.buttonStartStop.UseVisualStyleBackColor = true;
+            this.buttonStartStop.Click += new System.EventHandler(this.buttonStartStop_Click);
+            // 
+            // timerGameTick
+            // 
+            this.timerGameTick.Interval = 400;
+            this.timerGameTick.Tick += new System.EventHandler(this.timerGameTick_Tick);
             // 
             // Form1
             // 
@@ -118,5 +126,6 @@
         private GroupBox groupBoxMenu;
         private Button buttonStartStop;
         private Label labelScore;
+        private System.Windows.Forms.Timer timerGameTick;
     }
 }
