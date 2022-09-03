@@ -31,6 +31,7 @@ namespace SSnake
             pont.X++;
             BodyPoints.Add(pont);
             Direction = Direction.Right;
+            NewDirection = Direction.Right;
         }
 
         public int MapWidth
@@ -97,13 +98,13 @@ namespace SSnake
                         }
                         break;
                     case Direction.Down:
-                        if (direction != Direction.Right)
+                        if (direction != Direction.Up)
                         {
                             direction = value;
                         }
                         break;
                     case Direction.Left:
-                        if (direction != Direction.Left)
+                        if (direction != Direction.Right)
                         {
                             direction = value;
                         }
