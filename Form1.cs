@@ -35,6 +35,29 @@ namespace SSnake
             pictureBoxScreen.Image = screen;
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (snake != null)
+            {
+                switch (e.KeyCode.ToString())
+                {
+                    case "W":
+                        snake.Direction = Direction.Up;
+                        break;
+                    case "A":
+                        snake.Direction = Direction.Left;
+                        break;
+                    case "S":
+                        snake.Direction = Direction.Down;
+                        break;
+                    case "D":
+                        snake.Direction = Direction.Right;
+                        break;
+                }
+            }
+            
+        }
+
         private void buttonStartStop_Click(object sender, EventArgs e)
         {
             if (!playing)
