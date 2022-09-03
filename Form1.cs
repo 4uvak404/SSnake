@@ -73,12 +73,16 @@ namespace SSnake
             }
             else
             {
-
-
-                buttonStartStop.Text = "Старт";
-                timerGameTick.Stop();
-                playing = false;
+                StopGame();
             }
+        }
+        private void StopGame()
+        {
+
+
+            buttonStartStop.Text = "Старт";
+            timerGameTick.Stop();
+            playing = false;
         }
     }
 }

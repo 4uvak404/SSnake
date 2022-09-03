@@ -44,25 +44,27 @@
             // 
             this.tableLayoutPanelMenu.ColumnCount = 2;
             this.tableLayoutPanelMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanelMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
             this.tableLayoutPanelMenu.Controls.Add(this.pictureBoxScreen, 0, 0);
             this.tableLayoutPanelMenu.Controls.Add(this.groupBoxMenu, 1, 0);
             this.tableLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanelMenu.Name = "tableLayoutPanelMenu";
             this.tableLayoutPanelMenu.RowCount = 1;
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1056, 593);
+            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1140, 557);
             this.tableLayoutPanelMenu.TabIndex = 0;
             // 
             // pictureBoxScreen
             // 
             this.pictureBoxScreen.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxScreen.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxScreen.Location = new System.Drawing.Point(3, 4);
+            this.pictureBoxScreen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
-            this.pictureBoxScreen.Size = new System.Drawing.Size(850, 587);
+            this.pictureBoxScreen.Size = new System.Drawing.Size(905, 549);
             this.pictureBoxScreen.TabIndex = 0;
             this.pictureBoxScreen.TabStop = false;
             // 
@@ -71,9 +73,11 @@
             this.groupBoxMenu.Controls.Add(this.labelScore);
             this.groupBoxMenu.Controls.Add(this.buttonStartStop);
             this.groupBoxMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxMenu.Location = new System.Drawing.Point(859, 3);
+            this.groupBoxMenu.Location = new System.Drawing.Point(914, 4);
+            this.groupBoxMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxMenu.Name = "groupBoxMenu";
-            this.groupBoxMenu.Size = new System.Drawing.Size(194, 183);
+            this.groupBoxMenu.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxMenu.Size = new System.Drawing.Size(223, 244);
             this.groupBoxMenu.TabIndex = 0;
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Штуки";
@@ -81,21 +85,23 @@
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(29, 46);
+            this.labelScore.Location = new System.Drawing.Point(33, 61);
             this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(39, 15);
+            this.labelScore.Size = new System.Drawing.Size(47, 20);
             this.labelScore.TabIndex = 1;
             this.labelScore.Text = "Очки:";
             // 
             // buttonStartStop
             // 
-            this.buttonStartStop.Location = new System.Drawing.Point(51, 136);
+            this.buttonStartStop.Location = new System.Drawing.Point(58, 181);
+            this.buttonStartStop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonStartStop.Name = "buttonStartStop";
-            this.buttonStartStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartStop.Size = new System.Drawing.Size(86, 31);
             this.buttonStartStop.TabIndex = 0;
             this.buttonStartStop.Text = "Старт";
             this.buttonStartStop.UseVisualStyleBackColor = true;
             this.buttonStartStop.Click += new System.EventHandler(this.buttonStartStop_Click);
+            this.buttonStartStop.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             // 
             // timerGameTick
             // 
@@ -104,13 +110,15 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 593);
+            this.ClientSize = new System.Drawing.Size(1140, 557);
             this.Controls.Add(this.tableLayoutPanelMenu);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tableLayoutPanelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).EndInit();
             this.groupBoxMenu.ResumeLayout(false);
