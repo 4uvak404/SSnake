@@ -80,7 +80,7 @@ namespace SSnake
         public Direction Direction
         {
             get { return direction; }
-            set
+            private set
             {
                 switch (value)
                 {
@@ -111,6 +111,7 @@ namespace SSnake
                 }
             }
         }
+        public Direction NewDirection { get; set; }
         public Color BodyColor
         {
             get { return bodyColor; }
@@ -134,6 +135,7 @@ namespace SSnake
         public bool MoveForward()
         {
             bool notCollision;
+            Direction = NewDirection;
             if (FactLenght == WantedLenght)
             {
                 BodyPoints.RemoveAt(0);
