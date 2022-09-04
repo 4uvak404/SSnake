@@ -87,9 +87,9 @@
             this.labelScore.AutoSize = true;
             this.labelScore.Location = new System.Drawing.Point(33, 61);
             this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(47, 20);
+            this.labelScore.Size = new System.Drawing.Size(59, 20);
             this.labelScore.TabIndex = 1;
-            this.labelScore.Text = "Очки:";
+            this.labelScore.Text = "Очки: 0";
             // 
             // buttonStartStop
             // 
@@ -100,7 +100,7 @@
             this.buttonStartStop.TabIndex = 0;
             this.buttonStartStop.Text = "Старт";
             this.buttonStartStop.UseVisualStyleBackColor = true;
-            this.buttonStartStop.Click += new System.EventHandler(this.buttonStartStop_Click);
+            this.buttonStartStop.Click += new System.EventHandler(this.ButtonStartStop_Click);
             this.buttonStartStop.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             // 
             // timerGameTick

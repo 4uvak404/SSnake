@@ -121,10 +121,10 @@ namespace SSnake
                 bodyColor = value;
             }
         }
-        private List<Point> BodyPoints
+        public List<Point> BodyPoints
         {
             get { return bodyPoints; }
-            set { bodyPoints = value; }
+            private set { bodyPoints = value; }
         }
         public Point Head
         {

@@ -10,7 +10,7 @@ namespace SSnake
     {
         private int mapWidth;
         private int mapHeight;
-        private Bitmap picture;
+        private Bitmap? picture;
         private Point cords;
         private Random rnd;
         public Apple(int mapWidth, int mapHeight, Bitmap picture, Snake snake)
@@ -43,7 +43,7 @@ namespace SSnake
                 }
             }
         }
-        public Bitmap Picture
+        public Bitmap? Picture
         {
             get { return picture; }
             set { picture = value; }
@@ -56,25 +56,32 @@ namespace SSnake
         public Point NewCoordinates(Snake snake)
         {
             Point cords = new Point();
-            rnd = new Random();
-            do
+            if (snake.BodyPoints.Count < MapWidth * MapHeight)
             {
-                cords.X = rnd.Next(0, MapWidth);
-                cords.Y = rnd.Next(0, MapHeight);
+                rnd = new Random();
+                do
+                {
+                    cords.X = rnd.Next(0, MapWidth);
+                    cords.Y = rnd.Next(0, MapHeight);
+                }
+                while (snake.IntersectsWith(cords));
             }
-            while (snake.IntersectsWith(cords));
             return cords;
         }
         public void Draw(Bitmap screen)
         {
-            Graphics grafon = Graphics.FromImage(screen);
-            Point drawingPoint = new Point();
-            double cellWidth = (double)screen.Width / mapWidth;
-            double cellHeight = (double)screen.Height / mapHeight;
-            float size = (float)(cellWidth + cellHeight) / 2;
-            drawingPoint.X = (int)(Coordinates.X * cellWidth);
-            drawingPoint.Y = (int)(Coordinates.Y * cellHeight);
-            grafon.DrawImage(picture, drawingPoint.X, drawingPoint.Y, size, size);
+            if(Picture != null)
+            {
+                Graphics grafon = Graphics.FromImage(screen);
+                Point drawingPoint = new Point();
+                double cellWidth = (double)screen.Width / mapWidth;
+                double cellHeight = (double)screen.Height / mapHeight;
+                float size = (float)(cellWidth + cellHeight) / 2;
+                drawingPoint.X = (int)(Coordinates.X * cellWidth);
+                drawingPoint.Y = (int)(Coordinates.Y * cellHeight);
+                grafon.DrawImage(Picture, drawingPoint.X, drawingPoint.Y, size, size);
+
+            }
         }
     }
 }

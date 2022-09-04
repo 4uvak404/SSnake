@@ -16,19 +16,23 @@ namespace SSnake
         Apple apple;
         int mapWidth = 20, mapHeight = 15;
         int increment = 1;
-        Color snakeBodyColor = Color.IndianRed;
+        int score = 0;
+        Color snakeBodyColor = Color.ForestGreen;
         Bitmap appleImage = Resources.ImageApple;
         Bitmap screen;
         Graphics grafon;
         public Form1()
         {
             InitializeComponent();
+            snake = new Snake(mapWidth, mapHeight, snakeBodyColor);
+            apple = new Apple(mapWidth, mapHeight, appleImage, snake);
+            screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
+            grafon = Graphics.FromImage(screen);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
-            grafon = Graphics.FromImage(screen);
+            
         }
 
         private void TimerGameTick_Tick(object sender, EventArgs e)
@@ -40,6 +44,8 @@ namespace SSnake
             if (snake.IntersectsWith(apple.Coordinates))
             {
                 snake.WantedLenght += increment;
+                score++;
+                labelScore.Text = "Очки: " + score.ToString();
                 apple.Coordinates = apple.NewCoordinates(snake);
             }
             grafon.Clear(pictureBoxScreen.BackColor);
@@ -72,13 +78,16 @@ namespace SSnake
             
         }
 
-        private void buttonStartStop_Click(object sender, EventArgs e)
+        private void ButtonStartStop_Click(object sender, EventArgs e)
         {
             if (!playing)
             {
                 snake = new Snake(mapWidth, mapHeight, snakeBodyColor);
                 apple = new Apple(mapWidth, mapHeight, appleImage, snake);
+                score = 0;
+                labelScore.Text = "Очки: 0";
 
+                grafon.Clear(pictureBoxScreen.BackColor);
                 apple.Draw(screen);
                 snake.Draw(screen);
                 pictureBoxScreen.Image = screen;
