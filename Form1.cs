@@ -20,6 +20,7 @@ namespace SSnake
         Color snakeBodyColor = Color.ForestGreen;
         Bitmap appleImage = Resources.ImageApple;
         Bitmap screen;
+        Bitmap backgroundImage;
         Graphics grafon;
         public Form1()
         {
@@ -27,12 +28,13 @@ namespace SSnake
             snake = new Snake(mapWidth, mapHeight, snakeBodyColor);
             apple = new Apple(mapWidth, mapHeight, appleImage, snake);
             screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
+            backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
             grafon = Graphics.FromImage(screen);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            DrawBackground();
         }
 
         private void TimerGameTick_Tick(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace SSnake
                 labelScore.Text = "Очки: " + score.ToString();
                 apple.Coordinates = apple.NewCoordinates(snake);
             }
-            grafon.Clear(pictureBoxScreen.BackColor);
+            grafon.Clear(Color.Transparent);
             apple.Draw(screen);
             snake.Draw(screen);
 
@@ -87,7 +89,7 @@ namespace SSnake
                 score = 0;
                 labelScore.Text = "Очки: 0";
 
-                grafon.Clear(pictureBoxScreen.BackColor);
+                grafon.Clear(Color.Transparent);
                 apple.Draw(screen);
                 snake.Draw(screen);
                 pictureBoxScreen.Image = screen;
@@ -108,6 +110,25 @@ namespace SSnake
             buttonStartStop.Text = "Старт";
             timerGameTick.Stop();
             playing = false;
+        }
+        private void DrawBackground()
+        {
+            Graphics background = Graphics.FromImage(backgroundImage);
+            SolidBrush bruh = new SolidBrush(Color.LightGreen);
+            background.Clear(Color.PaleGreen);
+            float cellWidth = (float)screen.Width / mapWidth;
+            float cellHeight = (float)screen.Height / mapHeight;
+            for (int y = 0; y < mapHeight; y++)
+            {
+                for (int x = 0; x < mapWidth; x++)
+                {
+                    if ((x + y) % 2 == 0)
+                    {
+                        background.FillRectangle(bruh, x * cellWidth, y * cellHeight, cellWidth, cellHeight);
+                    }
+                }
+            }
+            pictureBoxScreen.BackgroundImage = backgroundImage;
         }
     }
 }
