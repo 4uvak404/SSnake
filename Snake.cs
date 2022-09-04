@@ -135,7 +135,7 @@ namespace SSnake
         }
         public bool MoveForward()
         {
-            bool notCollision;
+            bool notCollision = true;
             Direction = NewDirection;
             if (FactLenght == WantedLenght)
             {
@@ -167,13 +167,9 @@ namespace SSnake
                     newHead.X = Head.X - 1;
                     break;
             }
-            if (BodyPoints.Contains(newHead))
+            if (BodyPoints.Contains(newHead) || newHead.X < 0 || newHead.X >= MapWidth || newHead.Y < 0 || newHead.Y >= MapHeight)
             {
                 notCollision = false;
-            }
-            else
-            {
-                notCollision = true;
             }
             BodyPoints.Add (newHead);
             return notCollision;
