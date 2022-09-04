@@ -8,12 +8,20 @@ namespace SSnake
 {
     internal class Apple
     {
-        private int mapHeight;
         private int mapWidth;
+        private int mapHeight;
         private Bitmap picture;
         private Point cords;
         private Random rnd;
-
+        public Apple(int mapWidth, int mapHeight, Bitmap picture)
+        {
+            MapWidth = mapWidth;
+            MapHeight = mapHeight;
+            Picture = picture;
+            rnd = new Random();
+            cords.X = rnd.Next(0,MapWidth);
+            cords.Y = rnd.Next(0,MapHeight);
+        }
         public int MapHeight
         {
             get { return mapHeight; }
