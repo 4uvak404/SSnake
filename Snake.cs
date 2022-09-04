@@ -184,11 +184,13 @@ namespace SSnake
         }
         public void Draw(Bitmap screen)
         {
-            Pen penPen = new Pen(BodyColor, 20);
             Graphics grafon = Graphics.FromImage(screen);
             Point[] drawingPoints = new Point[BodyPoints.Count];
             double cellWidth = (double)screen.Width / mapWidth;
             double cellHeight = (double)screen.Height / mapHeight;
+            int penWidth = (int)(((cellWidth + cellHeight) / 2) - ((cellWidth + cellHeight) / 2 / 100 * 20));
+            Pen penPen = new Pen(BodyColor, penWidth);
+            penPen.EndCap = System.Drawing.Drawing2D.LineCap.DiamondAnchor;
             for (int i = 0; i < drawingPoints.Length; i++)
             {
                 drawingPoints[i].X = (int)(cellWidth / 2 + BodyPoints[i].X * cellWidth);
