@@ -178,9 +178,17 @@ namespace SSnake
             BodyPoints.Add (newHead);
             return notCollision;
         }
+        public bool IntersectsWith(Point Coordinates)
+        {
+            if (BodyPoints.Contains(Coordinates)) 
+            { 
+                return true; 
+            }
+            else return false;
+        }
         public void Draw(Bitmap screen)
         {
-            Pen penPen = new Pen(BodyColor, 10);
+            Pen penPen = new Pen(BodyColor, 20);
             Graphics grafon = Graphics.FromImage(screen);
             Point[] drawingPoints = new Point[BodyPoints.Count];
             double cellWidth = (double)screen.Width / mapWidth;
