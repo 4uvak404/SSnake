@@ -111,6 +111,23 @@ namespace SSnake
             timerGameTick.Stop();
             playing = false;
         }
+
+        private void pictureBoxScreen_SizeChanged(object sender, EventArgs e)
+        {
+            //screen.Dispose();
+            screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
+            grafon = Graphics.FromImage(screen);
+            //backgroundImage.Dispose();
+            backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
+            grafon.Clear(Color.Transparent);
+            if (playing)
+            {
+                apple.Draw(screen);
+                pictureBoxScreen.Image = screen;
+                snake.Draw(screen);
+            }
+            DrawBackground();
+        }
         private void DrawBackground()
         {
             Graphics background = Graphics.FromImage(backgroundImage);

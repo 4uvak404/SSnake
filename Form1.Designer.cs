@@ -67,6 +67,7 @@
             this.pictureBoxScreen.Size = new System.Drawing.Size(886, 549);
             this.pictureBoxScreen.TabIndex = 0;
             this.pictureBoxScreen.TabStop = false;
+            this.pictureBoxScreen.SizeChanged += new System.EventHandler(this.pictureBoxScreen_SizeChanged);
             // 
             // groupBoxMenu
             // 
