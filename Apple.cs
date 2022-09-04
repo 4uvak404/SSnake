@@ -73,12 +73,15 @@ namespace SSnake
             if(Picture != null)
             {
                 Graphics grafon = Graphics.FromImage(screen);
-                Point drawingPoint = new Point();
-                double cellWidth = (double)screen.Width / mapWidth;
-                double cellHeight = (double)screen.Height / mapHeight;
+                PointF drawingPoint = new PointF();
+                PointF center = new PointF();
+                float cellWidth = (float)screen.Width / mapWidth;
+                float cellHeight = (float)screen.Height / mapHeight;
                 float size = (float)(cellWidth + cellHeight) / 2;
-                drawingPoint.X = (int)(Coordinates.X * cellWidth);
-                drawingPoint.Y = (int)(Coordinates.Y * cellHeight);
+                center.X = Coordinates.X * cellWidth + cellWidth / 2;
+                center.Y = Coordinates.Y * cellHeight + cellHeight / 2;
+                drawingPoint.X = center.X - size / 2;
+                drawingPoint.Y = center.Y - size / 2;
                 grafon.DrawImage(Picture, drawingPoint.X, drawingPoint.Y, size, size);
 
             }

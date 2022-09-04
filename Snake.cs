@@ -185,16 +185,16 @@ namespace SSnake
         public void Draw(Bitmap screen)
         {
             Graphics grafon = Graphics.FromImage(screen);
-            Point[] drawingPoints = new Point[BodyPoints.Count];
-            double cellWidth = (double)screen.Width / mapWidth;
-            double cellHeight = (double)screen.Height / mapHeight;
-            int penWidth = (int)(((cellWidth + cellHeight) / 2) - ((cellWidth + cellHeight) / 2 / 100 * 20));
+            PointF[] drawingPoints = new PointF[BodyPoints.Count];
+            float cellWidth = (float)screen.Width / mapWidth;
+            float cellHeight = (float)screen.Height / mapHeight;
+            float penWidth = (Math.Min(cellWidth, cellHeight) - Math.Min(cellWidth, cellHeight) / 100 * 10);
             Pen penPen = new Pen(BodyColor, penWidth);
             penPen.EndCap = System.Drawing.Drawing2D.LineCap.DiamondAnchor;
             for (int i = 0; i < drawingPoints.Length; i++)
             {
-                drawingPoints[i].X = (int)(cellWidth / 2 + BodyPoints[i].X * cellWidth);
-                drawingPoints[i].Y = (int)(cellHeight / 2 + BodyPoints[i].Y * cellHeight);
+                drawingPoints[i].X = cellWidth / 2 + BodyPoints[i].X * cellWidth;
+                drawingPoints[i].Y = cellHeight / 2 + BodyPoints[i].Y * cellHeight;
             }
             grafon.DrawLines(penPen, drawingPoints);
         }
