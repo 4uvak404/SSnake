@@ -105,8 +105,8 @@
             // 
             // timerGameTick
             // 
-            this.timerGameTick.Interval = 400;
-            this.timerGameTick.Tick += new System.EventHandler(this.timerGameTick_Tick);
+            this.timerGameTick.Interval = 220;
+            this.timerGameTick.Tick += new System.EventHandler(this.TimerGameTick_Tick);
             // 
             // Form1
             // 

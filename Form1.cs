@@ -31,7 +31,7 @@ namespace SSnake
             grafon = Graphics.FromImage(screen);
         }
 
-        private void timerGameTick_Tick(object sender, EventArgs e)
+        private void TimerGameTick_Tick(object sender, EventArgs e)
         {
             if (!snake.MoveForward()) 
             { 
