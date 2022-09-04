@@ -1,3 +1,5 @@
+using SSnake.Properties;
+
 namespace SSnake
 {
     enum Direction
@@ -11,8 +13,11 @@ namespace SSnake
     {
         bool playing = false;
         Snake snake;
-        int mapWidth = 20, mapHeight = 20;
+        Apple apple;
+        int mapWidth = 20, mapHeight = 15;
+        int increment = 1;
         Color snakeBodyColor = Color.IndianRed;
+        Bitmap appleImage = Resources.ImageApple;
         Bitmap screen;
         Graphics grafon;
         public Form1()
@@ -38,6 +43,7 @@ namespace SSnake
                 apple.Coordinates = apple.NewCoordinates(snake);
             }
             grafon.Clear(pictureBoxScreen.BackColor);
+            apple.Draw(screen);
             snake.Draw(screen);
 
             pictureBoxScreen.Image = screen;
@@ -71,7 +77,9 @@ namespace SSnake
             if (!playing)
             {
                 snake = new Snake(mapWidth, mapHeight, snakeBodyColor);
+                apple = new Apple(mapWidth, mapHeight, appleImage, snake);
 
+                apple.Draw(screen);
                 snake.Draw(screen);
                 pictureBoxScreen.Image = screen;
 

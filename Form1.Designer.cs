@@ -54,7 +54,7 @@
             this.tableLayoutPanelMenu.RowCount = 1;
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1140, 557);
+            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1121, 557);
             this.tableLayoutPanelMenu.TabIndex = 0;
             // 
             // pictureBoxScreen
@@ -64,7 +64,7 @@
             this.pictureBoxScreen.Location = new System.Drawing.Point(3, 4);
             this.pictureBoxScreen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
-            this.pictureBoxScreen.Size = new System.Drawing.Size(905, 549);
+            this.pictureBoxScreen.Size = new System.Drawing.Size(886, 549);
             this.pictureBoxScreen.TabIndex = 0;
             this.pictureBoxScreen.TabStop = false;
             // 
@@ -73,7 +73,7 @@
             this.groupBoxMenu.Controls.Add(this.labelScore);
             this.groupBoxMenu.Controls.Add(this.buttonStartStop);
             this.groupBoxMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxMenu.Location = new System.Drawing.Point(914, 4);
+            this.groupBoxMenu.Location = new System.Drawing.Point(895, 4);
             this.groupBoxMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxMenu.Name = "groupBoxMenu";
             this.groupBoxMenu.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 557);
+            this.ClientSize = new System.Drawing.Size(1121, 557);
             this.Controls.Add(this.tableLayoutPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
