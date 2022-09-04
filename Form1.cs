@@ -28,7 +28,15 @@ namespace SSnake
 
         private void timerGameTick_Tick(object sender, EventArgs e)
         {
-            snake.MoveForward();
+            if (!snake.MoveForward()) 
+            { 
+                StopGame();
+            }
+            if (snake.IntersectsWith(apple.Coordinates))
+            {
+                snake.WantedLenght += increment;
+                apple.Coordinates = apple.NewCoordinates(snake);
+            }
             grafon.Clear(pictureBoxScreen.BackColor);
             snake.Draw(screen);
 
