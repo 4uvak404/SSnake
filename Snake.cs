@@ -194,7 +194,7 @@ namespace SSnake
                 drawingPoints[i].X = (int)(cellWidth / 2 + BodyPoints[i].X * cellWidth);
                 drawingPoints[i].Y = (int)(cellHeight / 2 + BodyPoints[i].Y * cellHeight);
             }
-            grafon.DrawPolygon(penPen, drawingPoints);
+            grafon.DrawLines(penPen, drawingPoints);
         }
     }
 }
