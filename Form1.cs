@@ -12,6 +12,7 @@ namespace SSnake
     public partial class Form1 : Form
     {
         bool playing = false;
+        bool played = false;
         Snake snake;
         Apple apple;
         int mapWidth = 20, mapHeight = 15;
@@ -99,6 +100,7 @@ namespace SSnake
                 buttonStartStop.Text = "Стоп";
                 timerTime.Start();
                 timerGameTick.Start();
+                played = true;
                 playing = true;
             }
             else
@@ -124,11 +126,11 @@ namespace SSnake
             //backgroundImage.Dispose();
             backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
             grafon.Clear(Color.Transparent);
-            if (playing)
+            if (played)
             {
                 apple.Draw(screen);
-                pictureBoxScreen.Image = screen;
                 snake.Draw(screen);
+                pictureBoxScreen.Image = screen;
             }
             DrawBackground();
         }
