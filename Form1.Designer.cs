@@ -35,6 +35,8 @@
             this.labelScore = new System.Windows.Forms.Label();
             this.buttonStartStop = new System.Windows.Forms.Button();
             this.timerGameTick = new System.Windows.Forms.Timer(this.components);
+            this.timerTime = new System.Windows.Forms.Timer(this.components);
+            this.labelTimer = new System.Windows.Forms.Label();
             this.tableLayoutPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             this.groupBoxMenu.SuspendLayout();
@@ -71,6 +73,7 @@
             // 
             // groupBoxMenu
             // 
+            this.groupBoxMenu.Controls.Add(this.labelTimer);
             this.groupBoxMenu.Controls.Add(this.labelScore);
             this.groupBoxMenu.Controls.Add(this.buttonStartStop);
             this.groupBoxMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -109,6 +112,20 @@
             this.timerGameTick.Interval = 220;
             this.timerGameTick.Tick += new System.EventHandler(this.TimerGameTick_Tick);
             // 
+            // timerTime
+            // 
+            this.timerTime.Interval = 1000;
+            this.timerTime.Tick += new System.EventHandler(this.timerTime_Tick);
+            // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(33, 90);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(135, 20);
+            this.labelTimer.TabIndex = 2;
+            this.labelTimer.Text = "Время игры: 00:00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -136,5 +153,7 @@
         private Button buttonStartStop;
         private Label labelScore;
         private System.Windows.Forms.Timer timerGameTick;
+        private System.Windows.Forms.Timer timerTime;
+        private Label labelTimer;
     }
 }

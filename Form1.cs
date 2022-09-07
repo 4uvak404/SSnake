@@ -22,6 +22,7 @@ namespace SSnake
         Bitmap screen;
         Bitmap backgroundImage;
         Graphics grafon;
+        DateTime timer = DateTime.MinValue;
         public Form1()
         {
             InitializeComponent();
@@ -88,6 +89,7 @@ namespace SSnake
                 apple = new Apple(mapWidth, mapHeight, appleImage, snake);
                 score = 0;
                 labelScore.Text = "Очки: 0";
+                labelTimer.Text = "Время игры: 00:00";
 
                 grafon.Clear(Color.Transparent);
                 apple.Draw(screen);
@@ -95,6 +97,7 @@ namespace SSnake
                 pictureBoxScreen.Image = screen;
 
                 buttonStartStop.Text = "Стоп";
+                timerTime.Start();
                 timerGameTick.Start();
                 playing = true;
             }
@@ -106,9 +109,10 @@ namespace SSnake
         private void StopGame()
         {
 
-
+            timerTime.Stop();
             buttonStartStop.Text = "Старт";
             timerGameTick.Stop();
+            timer = DateTime.MinValue;
             playing = false;
         }
 
@@ -128,6 +132,13 @@ namespace SSnake
             }
             DrawBackground();
         }
+
+        private void timerTime_Tick(object sender, EventArgs e)
+        {
+            timer = timer.AddSeconds(1);
+            labelTimer.Text = "Время игры: " + timer.ToString("mm:ss");
+        }
+
         private void DrawBackground()
         {
             Graphics background = Graphics.FromImage(backgroundImage);
