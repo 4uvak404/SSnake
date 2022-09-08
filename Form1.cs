@@ -66,16 +66,16 @@ namespace SSnake
                 switch (e.KeyCode.ToString())
                 {
                     case "W":
-                        snake.NewDirection = Direction.Up;
+                        snake.AddMove(Direction.Up);
                         break;
                     case "A":
-                        snake.NewDirection = Direction.Left;
+                        snake.AddMove(Direction.Left);
                         break;
                     case "S":
-                        snake.NewDirection = Direction.Down;
+                        snake.AddMove(Direction.Down);
                         break;
                     case "D":
-                        snake.NewDirection = Direction.Right;
+                        snake.AddMove(Direction.Right);
                         break;
                 }
             }

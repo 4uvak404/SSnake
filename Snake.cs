@@ -31,7 +31,6 @@ namespace SSnake
             pont.X++;
             BodyPoints.Add(pont);
             Direction = Direction.Right;
-            NewDirection = Direction.Right;
         }
 
         public int MapWidth
@@ -78,41 +77,13 @@ namespace SSnake
                 }
             }
         }
-        public Direction Direction
+        private Direction Direction
         {
             get { return direction; }
-            private set
-            {
-                switch (value)
-                {
-                    case Direction.Up:
-                        if (direction != Direction.Down)
-                        {
-                            direction = value;
-                        }
-                        break;
-                    case Direction.Right:
-                        if (direction != Direction.Left)
-                        {
-                            direction = value;
-                        }
-                        break;
-                    case Direction.Down:
-                        if (direction != Direction.Up)
-                        {
-                            direction = value;
-                        }
-                        break;
-                    case Direction.Left:
-                        if (direction != Direction.Right)
-                        {
-                            direction = value;
-                        }
-                        break;
-                }
-            }
+            set { direction = value; }
+            
         }
-        public Direction NewDirection { get; set; }
+        private List<Direction> NextMoves { get; set; } = new List<Direction>();
         public Color BodyColor
         {
             get { return bodyColor; }
@@ -136,7 +107,11 @@ namespace SSnake
         public bool MoveForward()
         {
             bool notCollision = true;
-            Direction = NewDirection;
+            if(NextMoves.Count > 0)
+            {
+                Direction = NextMoves[0];
+                NextMoves.RemoveAt(0);
+            }
             if (FactLenght == WantedLenght)
             {
                 BodyPoints.RemoveAt(0);
@@ -197,6 +172,47 @@ namespace SSnake
                 drawingPoints[i].Y = cellHeight / 2 + BodyPoints[i].Y * cellHeight;
             }
             grafon.DrawLines(penPen, drawingPoints);
+        }
+        public void AddMove(Direction moveDirection)
+        {
+            if (NextMoves.Count >= 2) return;
+            Direction oldDirection;
+            if (NextMoves.Count >= 1)
+            {
+                oldDirection = NextMoves.Last();
+            }
+            else
+            {
+                oldDirection = Direction;
+            }
+
+            switch (moveDirection)
+            {
+                case Direction.Up:
+                    if (oldDirection != Direction.Down && oldDirection != moveDirection)
+                    {
+                        NextMoves.Add(moveDirection);
+                    }
+                    break;
+                case Direction.Right:
+                    if (oldDirection != Direction.Left && oldDirection != moveDirection)
+                    {
+                        NextMoves.Add(moveDirection);
+                    }
+                    break;
+                case Direction.Down:
+                    if (oldDirection != Direction.Up && oldDirection != moveDirection)
+                    {
+                        NextMoves.Add(moveDirection);
+                    }
+                    break;
+                case Direction.Left:
+                    if (oldDirection != Direction.Right && oldDirection != moveDirection)
+                    {
+                        NextMoves.Add(moveDirection);
+                    }
+                    break;
+            }
         }
     }
 }
