@@ -32,11 +32,11 @@
             this.tableLayoutPanelMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
             this.groupBoxMenu = new System.Windows.Forms.GroupBox();
+            this.labelTimer = new System.Windows.Forms.Label();
             this.labelScore = new System.Windows.Forms.Label();
             this.buttonStartStop = new System.Windows.Forms.Button();
             this.timerGameTick = new System.Windows.Forms.Timer(this.components);
             this.timerTime = new System.Windows.Forms.Timer(this.components);
-            this.labelTimer = new System.Windows.Forms.Label();
             this.tableLayoutPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             this.groupBoxMenu.SuspendLayout();
@@ -86,6 +86,15 @@
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Штуки";
             // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(33, 90);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(135, 20);
+            this.labelTimer.TabIndex = 2;
+            this.labelTimer.Text = "Время игры: 00:00";
+            // 
             // labelScore
             // 
             this.labelScore.AutoSize = true;
@@ -116,15 +125,6 @@
             // 
             this.timerTime.Interval = 1000;
             this.timerTime.Tick += new System.EventHandler(this.timerTime_Tick);
-            // 
-            // labelTimer
-            // 
-            this.labelTimer.AutoSize = true;
-            this.labelTimer.Location = new System.Drawing.Point(33, 90);
-            this.labelTimer.Name = "labelTimer";
-            this.labelTimer.Size = new System.Drawing.Size(135, 20);
-            this.labelTimer.TabIndex = 2;
-            this.labelTimer.Text = "Время игры: 00:00";
             // 
             // Form1
             // 

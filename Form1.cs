@@ -133,6 +133,7 @@ namespace SSnake
                 pictureBoxScreen.Image = screen;
             }
             DrawBackground();
+            GC.Collect(1);
         }
 
         private void timerTime_Tick(object sender, EventArgs e)
