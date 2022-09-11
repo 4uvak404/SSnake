@@ -11,7 +11,7 @@ namespace SSnake
         private int mapWidth;
         private int mapHeight;
         private Bitmap? picture;
-        private Point cords;
+        private Point? cords;
         private Random rnd;
         public Apple(int mapWidth, int mapHeight, Bitmap picture, Snake snake)
         {
@@ -48,12 +48,12 @@ namespace SSnake
             get { return picture; }
             set { picture = value; }
         }
-        public Point Coordinates
+        public Point? Coordinates
         {
             get { return cords; }
             set { cords = value; }
         }
-        public Point NewCoordinates(Snake snake)
+        public Point? NewCoordinates(Snake snake)
         {
             Point cords = new Point();
             if (snake.BodyPoints.Count < MapWidth * MapHeight)
@@ -65,12 +65,13 @@ namespace SSnake
                     cords.Y = rnd.Next(0, MapHeight);
                 }
                 while (snake.IntersectsWith(cords));
+                return cords;
             }
-            return cords;
+            return null;
         }
         public void Draw(Bitmap screen)
         {
-            if(Picture != null)
+            if(Picture != null && Coordinates != null)
             {
                 Graphics grafon = Graphics.FromImage(screen);
                 PointF drawingPoint = new PointF();
@@ -78,8 +79,8 @@ namespace SSnake
                 float cellWidth = (float)screen.Width / mapWidth;
                 float cellHeight = (float)screen.Height / mapHeight;
                 float size = (float)(cellWidth + cellHeight) / 2;
-                center.X = Coordinates.X * cellWidth + cellWidth / 2;
-                center.Y = Coordinates.Y * cellHeight + cellHeight / 2;
+                center.X = Coordinates.Value.X * cellWidth + cellWidth / 2;
+                center.Y = Coordinates.Value.Y * cellHeight + cellHeight / 2;
                 drawingPoint.X = center.X - size / 2;
                 drawingPoint.Y = center.Y - size / 2;
                 grafon.DrawImage(Picture, drawingPoint.X, drawingPoint.Y, size, size);

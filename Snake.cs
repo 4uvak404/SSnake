@@ -149,9 +149,9 @@ namespace SSnake
             BodyPoints.Add (newHead);
             return notCollision;
         }
-        public bool IntersectsWith(Point Coordinates)
+        public bool IntersectsWith(Point? Coordinates)
         {
-            if (BodyPoints.Contains(Coordinates)) 
+            if (Coordinates != null && BodyPoints.Contains((Point)Coordinates)) 
             { 
                 return true; 
             }

@@ -51,6 +51,20 @@ namespace SSnake
                 score++;
                 labelScore.Text = "Очки: " + score.ToString();
                 apple.Coordinates = apple.NewCoordinates(snake);
+                if (apple.Coordinates == null)
+                {
+                    grafon.Clear(Color.Transparent);
+                    apple.Draw(screen);
+                    snake.Draw(screen);
+                    pictureBoxScreen.Image = screen;
+                    StopGame();
+                    MessageBox.Show($"Вы прошли змейку с полем размером {mapWidth}x{mapHeight} \n" +
+                        $"за {timer.ToString("mm:ss")}\n" +
+                        $"набрав при этом {score} очка(ов)",
+                        "Поздравляем",
+                        MessageBoxButtons.OK);
+                    return;
+                }
             }
             grafon.Clear(Color.Transparent);
             apple.Draw(screen);
