@@ -15,7 +15,7 @@ namespace SSnake
         bool played = false;
         Snake snake;
         Apple apple;
-        int mapWidth = 20, mapHeight = 15;
+        int mapWidth = 15, mapHeight = 15;
         int increment = 1;
         int score = 0;
         Color snakeBodyColor = Color.ForestGreen;
@@ -24,6 +24,7 @@ namespace SSnake
         Bitmap backgroundImage;
         Graphics grafon;
         DateTime timer = DateTime.MinValue;
+        double mapProportion;
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +33,11 @@ namespace SSnake
             screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
             backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
             grafon = Graphics.FromImage(screen);
+            CalcProportion();
+            if (checkBoxMSCS.Checked)
+            {
+                this.ClientSize = new Size(ClientSize.Width, (int)(pictureBoxScreen.Width * mapProportion));
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -156,6 +162,11 @@ namespace SSnake
             labelTimer.Text = "Время игры: " + timer.ToString("mm:ss");
         }
 
+        private void checkBoxMSCS_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void DrawBackground()
         {
             Graphics background = Graphics.FromImage(backgroundImage);
@@ -175,5 +186,27 @@ namespace SSnake
             }
             pictureBoxScreen.BackgroundImage = backgroundImage;
         }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (checkBoxMSCS.Checked)
+            {
+                if (this.ClientSize.Height != (int)((pictureBoxScreen.Width - groupBoxMenu.Width) * mapProportion))
+                {
+                    this.ClientSize = new Size(ClientSize.Width, (int)(pictureBoxScreen.Width * mapProportion));
+                    return;
+                }
+            }
+        }
+
+        private void CalcProportion()
+        {
+            mapProportion = (double)mapWidth / mapHeight;
+        }
+        //protected override void OnResize(EventArgs e)
+        //{
+        //    base.OnResize(e);
+        //}
+
     }
 }

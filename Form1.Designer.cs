@@ -32,6 +32,7 @@
             this.tableLayoutPanelMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
             this.groupBoxMenu = new System.Windows.Forms.GroupBox();
+            this.checkBoxMSCS = new System.Windows.Forms.CheckBox();
             this.labelTimer = new System.Windows.Forms.Label();
             this.labelScore = new System.Windows.Forms.Label();
             this.buttonStartStop = new System.Windows.Forms.Button();
@@ -51,12 +52,11 @@
             this.tableLayoutPanelMenu.Controls.Add(this.groupBoxMenu, 1, 0);
             this.tableLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMenu.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelMenu.Name = "tableLayoutPanelMenu";
             this.tableLayoutPanelMenu.RowCount = 1;
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1121, 557);
+            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1019, 557);
             this.tableLayoutPanelMenu.TabIndex = 0;
             // 
             // pictureBoxScreen
@@ -66,25 +66,38 @@
             this.pictureBoxScreen.Location = new System.Drawing.Point(3, 4);
             this.pictureBoxScreen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
-            this.pictureBoxScreen.Size = new System.Drawing.Size(886, 549);
+            this.pictureBoxScreen.Size = new System.Drawing.Size(784, 549);
             this.pictureBoxScreen.TabIndex = 0;
             this.pictureBoxScreen.TabStop = false;
             this.pictureBoxScreen.SizeChanged += new System.EventHandler(this.pictureBoxScreen_SizeChanged);
             // 
             // groupBoxMenu
             // 
+            this.groupBoxMenu.Controls.Add(this.checkBoxMSCS);
             this.groupBoxMenu.Controls.Add(this.labelTimer);
             this.groupBoxMenu.Controls.Add(this.labelScore);
             this.groupBoxMenu.Controls.Add(this.buttonStartStop);
             this.groupBoxMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxMenu.Location = new System.Drawing.Point(895, 4);
+            this.groupBoxMenu.Location = new System.Drawing.Point(793, 4);
             this.groupBoxMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxMenu.Name = "groupBoxMenu";
             this.groupBoxMenu.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxMenu.Size = new System.Drawing.Size(223, 244);
+            this.groupBoxMenu.Size = new System.Drawing.Size(223, 313);
             this.groupBoxMenu.TabIndex = 0;
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Штуки";
+            // 
+            // checkBoxMSCS
+            // 
+            this.checkBoxMSCS.Checked = true;
+            this.checkBoxMSCS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMSCS.Location = new System.Drawing.Point(12, 226);
+            this.checkBoxMSCS.Name = "checkBoxMSCS";
+            this.checkBoxMSCS.Size = new System.Drawing.Size(202, 51);
+            this.checkBoxMSCS.TabIndex = 3;
+            this.checkBoxMSCS.Text = "Обеспечить квадратные клетки (бета)";
+            this.checkBoxMSCS.UseVisualStyleBackColor = true;
+            this.checkBoxMSCS.CheckedChanged += new System.EventHandler(this.checkBoxMSCS_CheckedChanged);
             // 
             // labelTimer
             // 
@@ -130,13 +143,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1121, 557);
+            this.ClientSize = new System.Drawing.Size(1019, 557);
             this.Controls.Add(this.tableLayoutPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tableLayoutPanelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).EndInit();
             this.groupBoxMenu.ResumeLayout(false);
@@ -155,5 +170,6 @@
         private System.Windows.Forms.Timer timerGameTick;
         private System.Windows.Forms.Timer timerTime;
         private Label labelTimer;
+        private CheckBox checkBoxMSCS;
     }
 }
