@@ -38,9 +38,14 @@
             this.buttonStartStop = new System.Windows.Forms.Button();
             this.timerGameTick = new System.Windows.Forms.Timer(this.components);
             this.timerTime = new System.Windows.Forms.Timer(this.components);
+            this.comboBoxSpeed = new System.Windows.Forms.ComboBox();
+            this.numericUpDownMapWidth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownMapHeight = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             this.groupBoxMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMenu
@@ -73,6 +78,9 @@
             // 
             // groupBoxMenu
             // 
+            this.groupBoxMenu.Controls.Add(this.numericUpDownMapHeight);
+            this.groupBoxMenu.Controls.Add(this.numericUpDownMapWidth);
+            this.groupBoxMenu.Controls.Add(this.comboBoxSpeed);
             this.groupBoxMenu.Controls.Add(this.checkBoxMSCS);
             this.groupBoxMenu.Controls.Add(this.labelTimer);
             this.groupBoxMenu.Controls.Add(this.labelScore);
@@ -82,7 +90,7 @@
             this.groupBoxMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxMenu.Name = "groupBoxMenu";
             this.groupBoxMenu.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxMenu.Size = new System.Drawing.Size(223, 313);
+            this.groupBoxMenu.Size = new System.Drawing.Size(223, 458);
             this.groupBoxMenu.TabIndex = 0;
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Штуки";
@@ -91,7 +99,7 @@
             // 
             this.checkBoxMSCS.Checked = true;
             this.checkBoxMSCS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMSCS.Location = new System.Drawing.Point(12, 226);
+            this.checkBoxMSCS.Location = new System.Drawing.Point(12, 393);
             this.checkBoxMSCS.Name = "checkBoxMSCS";
             this.checkBoxMSCS.Size = new System.Drawing.Size(202, 51);
             this.checkBoxMSCS.TabIndex = 3;
@@ -139,6 +147,51 @@
             this.timerTime.Interval = 1000;
             this.timerTime.Tick += new System.EventHandler(this.timerTime_Tick);
             // 
+            // comboBoxSpeed
+            // 
+            this.comboBoxSpeed.FormattingEnabled = true;
+            this.comboBoxSpeed.Location = new System.Drawing.Point(26, 298);
+            this.comboBoxSpeed.Name = "comboBoxSpeed";
+            this.comboBoxSpeed.Size = new System.Drawing.Size(156, 28);
+            this.comboBoxSpeed.TabIndex = 4;
+            this.comboBoxSpeed.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpeed_SelectedIndexChanged);
+            // 
+            // numericUpDownMapWidth
+            // 
+            this.numericUpDownMapWidth.Location = new System.Drawing.Point(26, 247);
+            this.numericUpDownMapWidth.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownMapWidth.Name = "numericUpDownMapWidth";
+            this.numericUpDownMapWidth.Size = new System.Drawing.Size(66, 27);
+            this.numericUpDownMapWidth.TabIndex = 5;
+            this.numericUpDownMapWidth.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDownMapWidth.ValueChanged += new System.EventHandler(this.numericUpDownMapWidth_ValueChanged);
+            // 
+            // numericUpDownMapHeight
+            // 
+            this.numericUpDownMapHeight.Location = new System.Drawing.Point(116, 247);
+            this.numericUpDownMapHeight.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownMapHeight.Name = "numericUpDownMapHeight";
+            this.numericUpDownMapHeight.Size = new System.Drawing.Size(66, 27);
+            this.numericUpDownMapHeight.TabIndex = 6;
+            this.numericUpDownMapHeight.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numericUpDownMapHeight.ValueChanged += new System.EventHandler(this.numericUpDownMapHeight_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -156,6 +209,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).EndInit();
             this.groupBoxMenu.ResumeLayout(false);
             this.groupBoxMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,5 +226,8 @@
         private System.Windows.Forms.Timer timerTime;
         private Label labelTimer;
         private CheckBox checkBoxMSCS;
+        private ComboBox comboBoxSpeed;
+        private NumericUpDown numericUpDownMapHeight;
+        private NumericUpDown numericUpDownMapWidth;
     }
 }

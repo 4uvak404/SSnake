@@ -1,4 +1,5 @@
 using SSnake.Properties;
+using System.Data;
 
 namespace SSnake
 {
@@ -15,7 +16,7 @@ namespace SSnake
         bool played = false;
         Snake snake;
         Apple apple;
-        int mapWidth = 15, mapHeight = 15;
+        int mapWidth = 2, mapHeight = 2;
         int increment = 1;
         int score = 0;
         Color snakeBodyColor = Color.ForestGreen;
@@ -33,11 +34,25 @@ namespace SSnake
             screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
             backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
             grafon = Graphics.FromImage(screen);
+            mapHeight = (int)numericUpDownMapHeight.Value;
+            mapWidth = (int)numericUpDownMapWidth.Value;
             CalcProportion();
             if (checkBoxMSCS.Checked)
             {
                 this.ClientSize = new Size(ClientSize.Width, (int)(pictureBoxScreen.Width * mapProportion));
             }
+            DataTable speedTable = new DataTable();
+            DataColumn nameColumn = new DataColumn("Name", typeof(string));
+            DataColumn valueColumn = new DataColumn("Value", typeof(double));
+            speedTable.Columns.Add(nameColumn);
+            speedTable.Columns.Add(valueColumn);
+            speedTable.Rows.Add("Медленно", 2);
+            speedTable.Rows.Add("Нормально", 4);
+            speedTable.Rows.Add("Быстро", 8);
+            comboBoxSpeed.DisplayMember = "Name";
+            comboBoxSpeed.ValueMember = "Value";
+            comboBoxSpeed.DataSource = speedTable;
+            comboBoxSpeed.SelectedIndex = 1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -140,20 +155,7 @@ namespace SSnake
 
         private void pictureBoxScreen_SizeChanged(object sender, EventArgs e)
         {
-            //screen.Dispose();
-            screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
-            grafon = Graphics.FromImage(screen);
-            //backgroundImage.Dispose();
-            backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
-            grafon.Clear(Color.Transparent);
-            if (played)
-            {
-                apple.Draw(screen);
-                snake.Draw(screen);
-                pictureBoxScreen.Image = screen;
-            }
-            DrawBackground();
-            GC.Collect(1);
+
         }
 
         private void timerTime_Tick(object sender, EventArgs e)
@@ -189,14 +191,55 @@ namespace SSnake
 
         private void Form1_Resize(object sender, EventArgs e)
         {
+            CalcProportion();
             if (checkBoxMSCS.Checked)
             {
                 if (this.ClientSize.Height != (int)((pictureBoxScreen.Width - groupBoxMenu.Width) * mapProportion))
                 {
                     this.ClientSize = new Size(ClientSize.Width, (int)(pictureBoxScreen.Width * mapProportion));
-                    return;
                 }
             }
+            //screen.Dispose();
+            screen = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
+            grafon = Graphics.FromImage(screen);
+            //backgroundImage.Dispose();
+            backgroundImage = new Bitmap(pictureBoxScreen.ClientSize.Width, pictureBoxScreen.ClientSize.Height);
+            grafon.Clear(Color.Transparent);
+            if (played)
+            {
+                apple.Draw(screen);
+                snake.Draw(screen);
+                pictureBoxScreen.Image = screen;
+            }
+            DrawBackground();
+            GC.Collect(1);
+        }
+
+        private void tableLayoutPanelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBoxSpeed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            timerGameTick.Interval = (int)(1000 / (double)((DataRowView)comboBoxSpeed.SelectedItem).Row[1]);
+        }
+
+        private void groupBoxMenu_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDownMapWidth_ValueChanged(object sender, EventArgs e)
+        {
+            mapWidth = (int)numericUpDownMapWidth.Value;
+            Form1_Resize(sender, e);
+        }
+
+        private void numericUpDownMapHeight_ValueChanged(object sender, EventArgs e)
+        {
+            mapHeight = (int)numericUpDownMapHeight.Value;
+            Form1_Resize(sender, e);
         }
 
         private void CalcProportion()
