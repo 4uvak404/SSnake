@@ -201,7 +201,7 @@ namespace SSnake
 
         private void CalcProportion()
         {
-            mapProportion = (double)mapWidth / mapHeight;
+            mapProportion = (double)mapHeight / mapWidth;
         }
         //protected override void OnResize(EventArgs e)
         //{
