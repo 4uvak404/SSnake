@@ -53,6 +53,7 @@ namespace SSnake
             comboBoxSpeed.ValueMember = "Value";
             comboBoxSpeed.DataSource = speedTable;
             comboBoxSpeed.SelectedIndex = 1;
+            UpdateTable();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -240,7 +241,8 @@ namespace SSnake
 
         private void comboBoxSpeed_SelectedIndexChanged(object sender, EventArgs e)
         {
-            timerGameTick.Interval = (int)(1000 / (double)((DataRowView)comboBoxSpeed.SelectedItem).Row[1]);
+            timerGameTick.Interval = (int)(1000 / (double)comboBoxSpeed.SelectedValue);
+            UpdateTable();
         }
 
         private void groupBoxMenu_Enter(object sender, EventArgs e)
@@ -252,12 +254,14 @@ namespace SSnake
         {
             mapWidth = (int)numericUpDownMapWidth.Value;
             Form1_Resize(sender, e);
+            UpdateTable();
         }
 
         private void numericUpDownMapHeight_ValueChanged(object sender, EventArgs e)
         {
             mapHeight = (int)numericUpDownMapHeight.Value;
             Form1_Resize(sender, e);
+            UpdateTable();
         }
 
         private void CalcProportion()
@@ -268,6 +272,17 @@ namespace SSnake
         //{
         //    base.OnResize(e);
         //}
-
+        private void UpdateTable()
+        {
+            using (SSnakeContext db = new SSnakeContext())
+            {
+                dataGridViewRecords.Rows.Clear();
+                foreach (Record rec in db.Records)
+                {
+                    if(mapWidth == rec.MapWidth && mapHeight == rec.MapHeight && (double)comboBoxSpeed.SelectedValue == rec.SpeedValue)
+                    dataGridViewRecords.Rows.Add(rec.NickName, rec.Score, rec.TimePassed.ToString("mm:ss"));
+                }
+            }
+        }
     }
 }
