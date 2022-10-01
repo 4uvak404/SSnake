@@ -32,20 +32,25 @@
             this.tableLayoutPanelMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
             this.groupBoxMenu = new System.Windows.Forms.GroupBox();
+            this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.ColumnNickName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numericUpDownMapHeight = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownMapWidth = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxSpeed = new System.Windows.Forms.ComboBox();
             this.checkBoxMSCS = new System.Windows.Forms.CheckBox();
             this.labelTimer = new System.Windows.Forms.Label();
             this.labelScore = new System.Windows.Forms.Label();
             this.buttonStartStop = new System.Windows.Forms.Button();
             this.timerGameTick = new System.Windows.Forms.Timer(this.components);
             this.timerTime = new System.Windows.Forms.Timer(this.components);
-            this.comboBoxSpeed = new System.Windows.Forms.ComboBox();
-            this.numericUpDownMapWidth = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMapHeight = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             this.groupBoxMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMenu
@@ -61,7 +66,7 @@
             this.tableLayoutPanelMenu.Name = "tableLayoutPanelMenu";
             this.tableLayoutPanelMenu.RowCount = 1;
             this.tableLayoutPanelMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1019, 557);
+            this.tableLayoutPanelMenu.Size = new System.Drawing.Size(1092, 557);
             this.tableLayoutPanelMenu.TabIndex = 0;
             // 
             // pictureBoxScreen
@@ -71,13 +76,14 @@
             this.pictureBoxScreen.Location = new System.Drawing.Point(3, 4);
             this.pictureBoxScreen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxScreen.Name = "pictureBoxScreen";
-            this.pictureBoxScreen.Size = new System.Drawing.Size(784, 549);
+            this.pictureBoxScreen.Size = new System.Drawing.Size(857, 549);
             this.pictureBoxScreen.TabIndex = 0;
             this.pictureBoxScreen.TabStop = false;
             this.pictureBoxScreen.SizeChanged += new System.EventHandler(this.pictureBoxScreen_SizeChanged);
             // 
             // groupBoxMenu
             // 
+            this.groupBoxMenu.Controls.Add(this.dataGridViewRecords);
             this.groupBoxMenu.Controls.Add(this.numericUpDownMapHeight);
             this.groupBoxMenu.Controls.Add(this.numericUpDownMapWidth);
             this.groupBoxMenu.Controls.Add(this.comboBoxSpeed);
@@ -86,20 +92,107 @@
             this.groupBoxMenu.Controls.Add(this.labelScore);
             this.groupBoxMenu.Controls.Add(this.buttonStartStop);
             this.groupBoxMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxMenu.Location = new System.Drawing.Point(793, 4);
+            this.groupBoxMenu.Location = new System.Drawing.Point(866, 4);
             this.groupBoxMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBoxMenu.Name = "groupBoxMenu";
             this.groupBoxMenu.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBoxMenu.Size = new System.Drawing.Size(223, 458);
+            this.groupBoxMenu.Size = new System.Drawing.Size(223, 549);
             this.groupBoxMenu.TabIndex = 0;
             this.groupBoxMenu.TabStop = false;
             this.groupBoxMenu.Text = "Штуки";
+            // 
+            // dataGridViewRecords
+            // 
+            this.dataGridViewRecords.AllowUserToAddRows = false;
+            this.dataGridViewRecords.AllowUserToDeleteRows = false;
+            this.dataGridViewRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRecords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnNickName,
+            this.ColumnScore,
+            this.ColumnTime});
+            this.dataGridViewRecords.Location = new System.Drawing.Point(12, 293);
+            this.dataGridViewRecords.Name = "dataGridViewRecords";
+            this.dataGridViewRecords.ReadOnly = true;
+            this.dataGridViewRecords.RowHeadersVisible = false;
+            this.dataGridViewRecords.RowHeadersWidth = 51;
+            this.dataGridViewRecords.RowTemplate.Height = 29;
+            this.dataGridViewRecords.Size = new System.Drawing.Size(195, 196);
+            this.dataGridViewRecords.TabIndex = 7;
+            // 
+            // ColumnNickName
+            // 
+            this.ColumnNickName.HeaderText = "Никнейм";
+            this.ColumnNickName.MinimumWidth = 6;
+            this.ColumnNickName.Name = "ColumnNickName";
+            this.ColumnNickName.ReadOnly = true;
+            this.ColumnNickName.Width = 125;
+            // 
+            // ColumnScore
+            // 
+            this.ColumnScore.HeaderText = "Счёт";
+            this.ColumnScore.MinimumWidth = 6;
+            this.ColumnScore.Name = "ColumnScore";
+            this.ColumnScore.ReadOnly = true;
+            this.ColumnScore.Width = 125;
+            // 
+            // ColumnTime
+            // 
+            this.ColumnTime.HeaderText = "Время";
+            this.ColumnTime.MinimumWidth = 6;
+            this.ColumnTime.Name = "ColumnTime";
+            this.ColumnTime.ReadOnly = true;
+            this.ColumnTime.Width = 125;
+            // 
+            // numericUpDownMapHeight
+            // 
+            this.numericUpDownMapHeight.Location = new System.Drawing.Point(116, 178);
+            this.numericUpDownMapHeight.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownMapHeight.Name = "numericUpDownMapHeight";
+            this.numericUpDownMapHeight.Size = new System.Drawing.Size(66, 27);
+            this.numericUpDownMapHeight.TabIndex = 6;
+            this.numericUpDownMapHeight.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numericUpDownMapHeight.ValueChanged += new System.EventHandler(this.numericUpDownMapHeight_ValueChanged);
+            // 
+            // numericUpDownMapWidth
+            // 
+            this.numericUpDownMapWidth.Location = new System.Drawing.Point(26, 178);
+            this.numericUpDownMapWidth.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownMapWidth.Name = "numericUpDownMapWidth";
+            this.numericUpDownMapWidth.Size = new System.Drawing.Size(66, 27);
+            this.numericUpDownMapWidth.TabIndex = 5;
+            this.numericUpDownMapWidth.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.numericUpDownMapWidth.ValueChanged += new System.EventHandler(this.numericUpDownMapWidth_ValueChanged);
+            // 
+            // comboBoxSpeed
+            // 
+            this.comboBoxSpeed.FormattingEnabled = true;
+            this.comboBoxSpeed.Location = new System.Drawing.Point(26, 229);
+            this.comboBoxSpeed.Name = "comboBoxSpeed";
+            this.comboBoxSpeed.Size = new System.Drawing.Size(156, 28);
+            this.comboBoxSpeed.TabIndex = 4;
+            this.comboBoxSpeed.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpeed_SelectedIndexChanged);
             // 
             // checkBoxMSCS
             // 
             this.checkBoxMSCS.Checked = true;
             this.checkBoxMSCS.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMSCS.Location = new System.Drawing.Point(12, 393);
+            this.checkBoxMSCS.Location = new System.Drawing.Point(12, 495);
             this.checkBoxMSCS.Name = "checkBoxMSCS";
             this.checkBoxMSCS.Size = new System.Drawing.Size(202, 51);
             this.checkBoxMSCS.TabIndex = 3;
@@ -110,7 +203,7 @@
             // labelTimer
             // 
             this.labelTimer.AutoSize = true;
-            this.labelTimer.Location = new System.Drawing.Point(33, 90);
+            this.labelTimer.Location = new System.Drawing.Point(26, 72);
             this.labelTimer.Name = "labelTimer";
             this.labelTimer.Size = new System.Drawing.Size(135, 20);
             this.labelTimer.TabIndex = 2;
@@ -119,7 +212,7 @@
             // labelScore
             // 
             this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(33, 61);
+            this.labelScore.Location = new System.Drawing.Point(26, 43);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(59, 20);
             this.labelScore.TabIndex = 1;
@@ -127,7 +220,7 @@
             // 
             // buttonStartStop
             // 
-            this.buttonStartStop.Location = new System.Drawing.Point(58, 181);
+            this.buttonStartStop.Location = new System.Drawing.Point(58, 118);
             this.buttonStartStop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonStartStop.Name = "buttonStartStop";
             this.buttonStartStop.Size = new System.Drawing.Size(86, 31);
@@ -147,56 +240,11 @@
             this.timerTime.Interval = 1000;
             this.timerTime.Tick += new System.EventHandler(this.timerTime_Tick);
             // 
-            // comboBoxSpeed
-            // 
-            this.comboBoxSpeed.FormattingEnabled = true;
-            this.comboBoxSpeed.Location = new System.Drawing.Point(26, 298);
-            this.comboBoxSpeed.Name = "comboBoxSpeed";
-            this.comboBoxSpeed.Size = new System.Drawing.Size(156, 28);
-            this.comboBoxSpeed.TabIndex = 4;
-            this.comboBoxSpeed.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpeed_SelectedIndexChanged);
-            // 
-            // numericUpDownMapWidth
-            // 
-            this.numericUpDownMapWidth.Location = new System.Drawing.Point(26, 247);
-            this.numericUpDownMapWidth.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownMapWidth.Name = "numericUpDownMapWidth";
-            this.numericUpDownMapWidth.Size = new System.Drawing.Size(66, 27);
-            this.numericUpDownMapWidth.TabIndex = 5;
-            this.numericUpDownMapWidth.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numericUpDownMapWidth.ValueChanged += new System.EventHandler(this.numericUpDownMapWidth_ValueChanged);
-            // 
-            // numericUpDownMapHeight
-            // 
-            this.numericUpDownMapHeight.Location = new System.Drawing.Point(116, 247);
-            this.numericUpDownMapHeight.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownMapHeight.Name = "numericUpDownMapHeight";
-            this.numericUpDownMapHeight.Size = new System.Drawing.Size(66, 27);
-            this.numericUpDownMapHeight.TabIndex = 6;
-            this.numericUpDownMapHeight.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.numericUpDownMapHeight.ValueChanged += new System.EventHandler(this.numericUpDownMapHeight_ValueChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 557);
+            this.ClientSize = new System.Drawing.Size(1092, 557);
             this.Controls.Add(this.tableLayoutPanelMenu);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
@@ -209,8 +257,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).EndInit();
             this.groupBoxMenu.ResumeLayout(false);
             this.groupBoxMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMapWidth)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,5 +278,9 @@
         private ComboBox comboBoxSpeed;
         private NumericUpDown numericUpDownMapHeight;
         private NumericUpDown numericUpDownMapWidth;
+        private DataGridView dataGridViewRecords;
+        private DataGridViewTextBoxColumn ColumnNickName;
+        private DataGridViewTextBoxColumn ColumnScore;
+        private DataGridViewTextBoxColumn ColumnTime;
     }
 }
