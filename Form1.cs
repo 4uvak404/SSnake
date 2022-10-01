@@ -145,6 +145,24 @@ namespace SSnake
         }
         private void StopGame()
         {
+            using (SSnakeContext db = new SSnakeContext())
+            {
+                Record record = new Record()
+                {
+                    NickName = "test tesovich",
+                    Score = score,
+                    TimePassed = timer,
+                    MapWidth = mapWidth,
+                    MapHeight = mapHeight,
+                    SpeedName = ((DataRowView)comboBoxSpeed.SelectedItem).Row[0].ToString(),
+                    SpeedValue = (double)comboBoxSpeed.SelectedValue,
+                    RecordDateTime = DateTime.Now,
+                    SnakeLength = snake.FactLenght
+                };
+                db.Records.Add(record);
+                db.SaveChanges();
+            }
+
 
             timerTime.Stop();
             buttonStartStop.Text = "Старт";
