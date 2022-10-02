@@ -64,14 +64,16 @@ namespace SSnake
         private void TimerGameTick_Tick(object sender, EventArgs e)
         {
             if (!snake.MoveForward()) 
-            { 
-                StopGame();
+            {
+                grafon.Clear(Color.Transparent);
+                apple.Draw(screen);
+                snake.Draw(screen);
+                pictureBoxScreen.Image = screen;
+                StopGame(false);
+                return;
             }
             if (snake.IntersectsWith(apple.Coordinates))
             {
-                snake.WantedLenght += increment;
-                score++;
-                labelScore.Text = "Очки: " + score.ToString();
                 apple.Coordinates = apple.NewCoordinates(snake);
                 if (apple.Coordinates == null)
                 {
@@ -79,19 +81,17 @@ namespace SSnake
                     apple.Draw(screen);
                     snake.Draw(screen);
                     pictureBoxScreen.Image = screen;
-                    StopGame();
-                    MessageBox.Show($"Вы прошли змейку с полем размером {mapWidth}x{mapHeight} \n" +
-                        $"за {timer.ToString("mm:ss")}\n" +
-                        $"набрав при этом {score} очка(ов)",
-                        "Поздравляем",
-                        MessageBoxButtons.OK);
+                    StopGame(true);
                     return;
                 }
+                snake.WantedLenght += increment;
+                score++;
+                labelScore.Text = "Очки: " + score.ToString();
+
             }
             grafon.Clear(Color.Transparent);
             apple.Draw(screen);
             snake.Draw(screen);
-
             pictureBoxScreen.Image = screen;
         }
 
@@ -142,17 +142,30 @@ namespace SSnake
             }
             else
             {
-                StopGame();
+                StopGame(false);
             }
         }
-        private void StopGame()
+        private void StopGame(bool won)
         {
             timerTime.Stop();
             buttonStartStop.Text = "Старт";
             timerGameTick.Stop();
             playing = false;
             Task.Delay(1000);
-            string? result = CustomMessageBox.Show("Игра окончена", "Хотите ли вы сохранить свой рекорд?", "Анонимус");
+            string? result;
+            if (won)
+            {
+                result = CustomMessageBox.Show("Поздравляем!!!", $"Вы прошли змейку с полем размером {mapWidth}x{mapHeight} \n" +
+                        $"за {timer.ToString("mm:ss")}\n" +
+                        $"набрав при этом {score} очка(ов) \n" +
+                        $"Хотите ли вы сохранить свой рекорд?", "Анонимус");
+            }
+            else
+            {
+                result = CustomMessageBox.Show("Игра окончена", $"Ваше время: {timer.ToString("mm:ss")}\n" +
+                        $"Счёт: {score} \n" +
+                        $"Хотите ли вы сохранить свой рекорд?", "Анонимус");
+            }
             if (result != null)
             {
                 using (SSnakeContext db = new SSnakeContext())
@@ -257,6 +270,8 @@ namespace SSnake
         private void numericUpDownMapWidth_ValueChanged(object sender, EventArgs e)
         {
             mapWidth = (int)numericUpDownMapWidth.Value;
+            snake.MapWidth = mapWidth;
+            apple.MapWidth = mapWidth;
             Form1_Resize(sender, e);
             UpdateTable();
         }
@@ -264,6 +279,8 @@ namespace SSnake
         private void numericUpDownMapHeight_ValueChanged(object sender, EventArgs e)
         {
             mapHeight = (int)numericUpDownMapHeight.Value;
+            snake.MapHeight = mapHeight;
+            apple.MapHeight = mapHeight;
             Form1_Resize(sender, e);
             UpdateTable();
         }
