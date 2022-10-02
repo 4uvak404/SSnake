@@ -125,6 +125,7 @@ namespace SSnake
                 snake = new Snake(mapWidth, mapHeight, snakeBodyColor);
                 apple = new Apple(mapWidth, mapHeight, appleImage, snake);
                 score = 0;
+                timer = DateTime.MinValue;
                 labelScore.Text = "Очки: 0";
                 labelTimer.Text = "Время игры: 00:00";
 
@@ -146,29 +147,33 @@ namespace SSnake
         }
         private void StopGame()
         {
-            using (SSnakeContext db = new SSnakeContext())
-            {
-                Record record = new Record()
-                {
-                    NickName = "test tesovich",
-                    Score = score,
-                    TimePassed = timer,
-                    MapWidth = mapWidth,
-                    MapHeight = mapHeight,
-                    SpeedName = ((DataRowView)comboBoxSpeed.SelectedItem).Row[0].ToString(),
-                    SpeedValue = (double)comboBoxSpeed.SelectedValue,
-                    RecordDateTime = DateTime.Now,
-                    SnakeLength = snake.FactLenght
-                };
-                db.Records.Add(record);
-                db.SaveChanges();
-            }
-            UpdateTable();
             timerTime.Stop();
             buttonStartStop.Text = "Старт";
             timerGameTick.Stop();
-            timer = DateTime.MinValue;
             playing = false;
+            Task.Delay(1000);
+            string? result = CustomMessageBox.Show("Игра окончена", "Хотите ли вы сохранить свой рекорд?", "Анонимус");
+            if (result != null)
+            {
+                using (SSnakeContext db = new SSnakeContext())
+                {
+                    Record record = new Record()
+                    {
+                        NickName = result,
+                        Score = score,
+                        TimePassed = timer,
+                        MapWidth = mapWidth,
+                        MapHeight = mapHeight,
+                        SpeedName = ((DataRowView)comboBoxSpeed.SelectedItem).Row[0].ToString(),
+                        SpeedValue = (double)comboBoxSpeed.SelectedValue,
+                        RecordDateTime = DateTime.Now,
+                        SnakeLength = snake.FactLenght
+                    };
+                    db.Records.Add(record);
+                    db.SaveChanges();
+                }
+                UpdateTable();
+            }
         }
 
         private void pictureBoxScreen_SizeChanged(object sender, EventArgs e)
