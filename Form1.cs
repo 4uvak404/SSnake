@@ -151,7 +151,6 @@ namespace SSnake
             buttonStartStop.Text = "Старт";
             timerGameTick.Stop();
             playing = false;
-            Task.Delay(1000);
             string? result;
             if (won)
             {

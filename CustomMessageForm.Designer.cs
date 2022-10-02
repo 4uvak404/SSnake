@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelMainText = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.buttonNo = new System.Windows.Forms.Button();
             this.buttonYes = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.timerOn = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // labelMainText
@@ -44,6 +46,7 @@
             // 
             // textBox
             // 
+            this.textBox.Enabled = false;
             this.textBox.Location = new System.Drawing.Point(141, 125);
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(198, 27);
@@ -51,20 +54,22 @@
             // 
             // buttonNo
             // 
+            this.buttonNo.Enabled = false;
             this.buttonNo.Location = new System.Drawing.Point(59, 171);
             this.buttonNo.Name = "buttonNo";
             this.buttonNo.Size = new System.Drawing.Size(65, 36);
-            this.buttonNo.TabIndex = 2;
+            this.buttonNo.TabIndex = 3;
             this.buttonNo.Text = "Нет";
             this.buttonNo.UseVisualStyleBackColor = true;
             this.buttonNo.Click += new System.EventHandler(this.buttonNo_Click);
             // 
             // buttonYes
             // 
+            this.buttonYes.Enabled = false;
             this.buttonYes.Location = new System.Drawing.Point(130, 171);
             this.buttonYes.Name = "buttonYes";
             this.buttonYes.Size = new System.Drawing.Size(209, 36);
-            this.buttonYes.TabIndex = 3;
+            this.buttonYes.TabIndex = 2;
             this.buttonYes.Text = "Да";
             this.buttonYes.UseVisualStyleBackColor = true;
             this.buttonYes.Click += new System.EventHandler(this.buttonYes_Click);
@@ -77,6 +82,12 @@
             this.label1.Size = new System.Drawing.Size(76, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Никнейм:";
+            // 
+            // timerOn
+            // 
+            this.timerOn.Enabled = true;
+            this.timerOn.Interval = 700;
+            this.timerOn.Tick += new System.EventHandler(this.timerOn_Tick);
             // 
             // CustomMessageForm
             // 
@@ -103,5 +114,6 @@
         private Button buttonNo;
         private Button buttonYes;
         private Label label1;
+        private System.Windows.Forms.Timer timerOn;
     }
 }

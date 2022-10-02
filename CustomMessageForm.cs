@@ -38,5 +38,14 @@ namespace SSnake
             DialogResult = DialogResult.Yes;
             Close();
         }
+
+        private void timerOn_Tick(object sender, EventArgs e)
+        {
+            timerOn.Stop();
+            textBox.Enabled = true;
+            buttonNo.Enabled = true;
+            buttonYes.Enabled = true;
+            textBox.Focus();
+        }
     }
 }
