@@ -163,8 +163,7 @@ namespace SSnake
                 db.Records.Add(record);
                 db.SaveChanges();
             }
-
-
+            UpdateTable();
             timerTime.Stop();
             buttonStartStop.Text = "Старт";
             timerGameTick.Stop();
@@ -282,6 +281,7 @@ namespace SSnake
                     if(mapWidth == rec.MapWidth && mapHeight == rec.MapHeight && (double)comboBoxSpeed.SelectedValue == rec.SpeedValue)
                     dataGridViewRecords.Rows.Add(rec.NickName, rec.Score, rec.TimePassed.ToString("mm:ss"));
                 }
+                dataGridViewRecords.Sort(dataGridViewRecords.Columns[1], System.ComponentModel.ListSortDirection.Descending);
             }
         }
     }
